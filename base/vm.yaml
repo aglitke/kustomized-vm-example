@@ -1,0 +1,45 @@
+---
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachine
+metadata:
+  labels:
+    kubevirt.io/vm: base
+  name: base
+spec:
+  dataVolumeTemplates:
+  - metadata:
+      name: base-disk
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 20Gi
+      source:
+        pvc:
+          name: base-disk-image
+          namespace: kubevirt-golden-images
+    status: {}
+  running: false
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: base
+    spec:
+      domain:
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: disk1
+        machine:
+          type: ""
+        resources:
+          requests:
+            memory: 4GiB
+      terminationGracePeriodSeconds: 0
+      volumes:
+      - dataVolume:
+          name: base-disk
+        name: disk1

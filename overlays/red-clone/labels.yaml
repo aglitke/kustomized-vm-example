@@ -1,0 +1,12 @@
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachine
+metadata:
+  name: red-clone
+  labels:
+    kubevirt.io/vm: red-clone
+spec:
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: red-clone
+

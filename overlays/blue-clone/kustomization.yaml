@@ -1,0 +1,13 @@
+bases:
+- ../../base
+patches:
+- path: name.yaml
+  target:
+    kind: VirtualMachine
+- path: labels.yaml
+  target:
+    kind: VirtualMachine
+- path: disk.yaml
+  target:
+    kind: VirtualMachine
+

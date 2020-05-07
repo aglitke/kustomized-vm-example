@@ -1,0 +1,10 @@
+- op: replace
+  path: /spec/template/spec/volumes/0/dataVolume/name
+  value: red-clone-disk
+- op: replace
+  path: /spec/dataVolumeTemplates/0/metadata/name
+  value: red-clone-disk
+- op: add
+  path: /spec/dataVolumeTemplates/0/spec/pvc/storageClassName
+  value: local
+
